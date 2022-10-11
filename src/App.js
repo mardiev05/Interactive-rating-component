@@ -1,25 +1,17 @@
-import logo from './logo.svg';
+import { useContext } from "react";
+import { Store } from "./context/store";
+import { AppDiv } from "./styles/Elements.styles"
+import Cart from './components/Cart';
+import ThankState from './components/ThankState';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { completed } = useContext(Store)
+    return (
+        <AppDiv>
+            {completed ? <ThankState /> : <Cart />}
+        </AppDiv>
+    );
 }
 
 export default App;
